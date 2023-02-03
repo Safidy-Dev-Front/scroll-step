@@ -12,19 +12,26 @@ export default function Home() {
   const element_3 = useRef<HTMLDivElement>(null);
   gsap.registerPlugin(ScrollTrigger);
   useEffect(()=>{
-    gsap.to('.element_3',{
+
+    let tl = gsap.timeline({
       scrollTrigger:{
         trigger: ".element_3", 
         start: "20px 50%",
         end: ()=>"+="+300 + ' top',
         scrub: 3,
         markers: true,
-      },
-      x:200,
-      rotation:360,
-      duration:4,
-      scale: 2.5
+      }
     })
+   tl.to('.element_3', {
+    x:200,
+    rotation:360,
+    duration:4,
+   })
+   tl.to('.element_3', {
+    x:0,
+    backgroundColor:"red",
+    duration:2,
+   })
   }, [])
   return (
     <>
