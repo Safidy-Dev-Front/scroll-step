@@ -105,3 +105,11 @@ a {
     color-scheme: dark;
   }
 }
+.div_element{
+  display: block;
+  width: 250px;
+  height: 250px;
+  color: white;
+  margin: 20px;
+  background-color: #1a191910;
+}
