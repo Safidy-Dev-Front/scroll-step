@@ -4,24 +4,26 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const element_3 = useRef<HTMLDivElement>(null);
   gsap.registerPlugin(ScrollTrigger);
   useEffect(()=>{
     gsap.to('.element_3',{
       scrollTrigger:{
         trigger: ".element_3", 
         start: "20px 50%",
-        end: "bottom 20px",
+        end: ()=>"+="+300 + ' top',
+        scrub: 3,
         markers: true,
-        toggleActions: "restart pause reverse pause"
       },
       x:200,
       rotation:360,
-      duration:4
+      duration:4,
+      scale: 2.5
     })
   }, [])
   return (
@@ -40,7 +42,7 @@ export default function Home() {
           <div className="div_element element_2">
             Element 2
           </div>  
-          <div className="div_element element_3">
+          <div ref={element_3} className="div_element element_3">
             Element 3
           </div>  
         </div>        
