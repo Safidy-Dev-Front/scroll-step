@@ -14,6 +14,9 @@ export default function Home() {
     gsap.to('.element_3',{
       scrollTrigger:{
         trigger: ".element_3", 
+        start: "20px 50%",
+        end: "bottom 20px",
+        markers: true,
         toggleActions: "restart pause reverse pause"
       },
       x:200,
