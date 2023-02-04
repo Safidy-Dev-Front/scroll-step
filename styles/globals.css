@@ -116,3 +116,20 @@ a {
 body{
   padding-bottom: 800px;
 }
+.intersection_verticat{
+  overflow-x: auto;
+  padding: 10px 0;
+  width: 100%;
+
+}
+.element_parent{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  width: fit-content;
+}
+.section_element{
+  height: 450px;
+  width: 450px;
+  background-color: #00000010;
+}

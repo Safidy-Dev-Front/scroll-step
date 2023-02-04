@@ -10,14 +10,16 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const element_3 = useRef<HTMLDivElement>(null);
+  const element_parent_scroll = useRef<HTMLDivElement>(null);
+
   gsap.registerPlugin(ScrollTrigger);
   useEffect(()=>{
-
+    //Using Timeline ==================
     let tl = gsap.timeline({
       scrollTrigger:{
         trigger: ".element_3", 
         start: "20px 50%",
-        end: ()=>"+="+300 + ' top',
+        end: ()=>"+="+300 + ' 80px',
         scrub: 3,
         markers: true,
       }
@@ -25,13 +27,46 @@ export default function Home() {
    tl.to('.element_3', {
     x:200,
     rotation:360,
-    duration:4,
+    duration:1,
    })
    tl.to('.element_3', {
     x:0,
     backgroundColor:"red",
     duration:2,
    })
+   //Pin==============
+   gsap.to('.element_2',{
+      scrollTrigger:{
+        trigger: '.element_2',
+        start: "20px 50%",
+        end: ()=>"+="+300 + ' 80px',
+        scrub: true,
+        pin:'.element_1',
+        markers: true,
+      },
+      x:200,
+    rotation:360,
+    duration:1,
+   })
+   
+   let sections = gsap.utils.toArray(".section_element");
+
+gsap.to(sections, {
+  xPercent: -100 * (sections.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: element_parent_scroll.current,
+    pin: true,
+    scrub: 1,
+    snap: 1 / (sections.length - 1),
+    start: 'top 0%',  
+    end:()=> "+="+element_parent_scroll.current?.offsetWidth,
+    markers: true,
+    }
+  
+});
+console.log("width====",  element_parent_scroll.current?.offsetWidth);
+
   }, [])
   return (
     <>
@@ -52,7 +87,17 @@ export default function Home() {
           <div ref={element_3} className="div_element element_3">
             Element 3
           </div>  
-        </div>        
+        </div>  
+        <section id='intersection_verticat' className='intersection_verticat'>
+          <div className="element_parent" ref={element_parent_scroll}>
+            <div className="section_element"></div>
+            <div className="section_element"></div>
+            <div className="section_element"></div>
+            <div className="section_element"></div>
+            <div className="section_element"></div>
+            <div className="section_element"></div>
+          </div>
+        </section>      
       </main>
     </>
   )
