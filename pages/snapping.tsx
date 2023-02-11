@@ -16,13 +16,14 @@ export default function Snapping() {
             ease: "none",
             scrollTrigger: {
               trigger: ".element_parenttest",
-              pin: true,
               scrub: 1,
+              pin:".element_parenttest",
               snap: 1 / (sectionstest.length - 1),
               end: `+=${width}`,
               markers: true,
+              invalidateOnRefresh: true,
+
               }
-            
           });
 console.log("width====",  element_parent_scroll1.current?.offsetWidth);
 
@@ -39,6 +40,9 @@ console.log("width====",  element_parent_scroll1.current?.offsetWidth);
             <div className="section_elementtest"></div>
             <div className="section_elementtest"></div>
           </div>
+        </section>
+        <section id='intersection_aristid'>
+          <h2>Section 2</h2>
         </section> 
         </div>
     )

@@ -1,7 +1,8 @@
 
 
 .intersection_verticat{
-  overflow-x: auto;
+  height: fit-content;
+  overflow-x: hidden;
   padding: 10px 0;
   width: 100%;
 
