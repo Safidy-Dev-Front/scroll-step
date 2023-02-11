@@ -56,16 +56,15 @@ gsap.to(sections, {
   ease: "none",
   scrollTrigger: {
     trigger: element_parent_scroll.current,
-    pin: true,
+    pin: element_parent_scroll.current,
     scrub: 1,
     snap: 1 / (sections.length - 1),
     start: 'top 0%',  
-    end:()=> "+="+element_parent_scroll.current?.offsetWidth,
+    end:()=> "bottom +="+element_parent_scroll.current?.offsetWidth,
     markers: true,
     }
   
 });
-console.log("width====",  element_parent_scroll.current?.offsetWidth);
 
   }, [])
   return (
